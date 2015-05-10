@@ -10,6 +10,7 @@
 #include <ros/ros.h>
 #include <std_msgs/Empty.h>
 #include <geometry_msgs/Twist.h>
+#include <nav_msgs/Odometry.h>
 #include <std_srvs/Empty.h>
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
@@ -39,6 +40,19 @@ private slots:
     void on_landButton_clicked();
 
     void on_togglecameraButton_clicked();
+    void on_keyboardButton_windowTitleChanged(const QString &title);
+    
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_keyboardButton_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
 
 private:
     Ui::quadGUI *ui;
@@ -48,9 +62,14 @@ private:
 
     ros::NodeHandle nh;
     std_msgs::Empty msgE;
+    geometry_msgs::Twist msg2;
+    geometry_msgs::Twist msg1;
     ros::Publisher takeOff;
     ros::Publisher land;
     ros::Publisher twist;
+    ros::Publisher front;
+    ros::Subscriber sub;
+
 
 };
 

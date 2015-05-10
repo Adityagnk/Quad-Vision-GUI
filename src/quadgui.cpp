@@ -90,3 +90,171 @@ void quadGUI::on_togglecameraButton_clicked()
         ROS_INFO("Camera toggled");
     }
 }
+void quadGUI::on_keyboardButton_windowTitleChanged(const QString &title)
+{
+
+}
+
+void quadGUI::on_pushButton_clicked()
+{
+    ROS_INFO("Moving forward");
+    front=nh.advertise<geometry_msgs::Twist>("/quad/cmd_vel", 1000);
+    ros::Rate loop_rate(30);
+    int cnt=0;
+    msg2.linear.x=1.0;
+    msg2.linear.y=0.0;
+    msg2.linear.z=0.0;
+    msg2.angular.x=0.0;
+    msg2.angular.y=0.0;
+    msg2.angular.z=0.0;
+    while(ros::ok())
+    {
+     if(cnt<5)
+     {
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     else
+     {
+         break;
+     }
+     loop_rate.sleep();
+    }
+}
+
+void quadGUI::on_pushButton_2_clicked()
+{
+    ROS_INFO("Moving backward");
+    front=nh.advertise<geometry_msgs::Twist>("/quad/cmd_vel", 1000);
+    ros::Rate loop_rate(30);
+    int cnt=0;
+    msg2.linear.x=-1.0;
+    msg2.linear.y=0.0;
+    msg2.linear.z=0.0;
+    msg2.angular.x=0.0;
+    msg2.angular.y=0.0;
+    msg2.angular.z=0.0;
+    while(ros::ok())
+    {
+     if(cnt<5)
+     {
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     else
+     {
+         break;
+     }
+     loop_rate.sleep();
+    }
+}
+
+void quadGUI::on_pushButton_3_clicked()
+{
+    ROS_INFO("Moving right");
+    front=nh.advertise<geometry_msgs::Twist>("/quad/cmd_vel", 1000);
+    ros::Rate loop_rate(30);
+    int cnt=0;
+    msg2.linear.x=0.0;
+    msg2.linear.y=-1.0;
+    msg2.linear.z=0.0;
+    msg2.angular.x=0.0;
+    msg2.angular.y=0.0;
+    msg2.angular.z=0.0;
+    while(ros::ok())
+    {
+     if(cnt<5)
+     {
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     else
+     {
+         break;
+     }
+     loop_rate.sleep();
+    }
+}
+
+void quadGUI::on_keyboardButton_clicked()
+{
+
+}
+
+void quadGUI::on_pushButton_4_clicked()
+{
+    ROS_INFO("Moving right");
+    front=nh.advertise<geometry_msgs::Twist>("/quad/cmd_vel", 1000);
+    ros::Rate loop_rate(30);
+    int cnt=0;
+    msg2.linear.x=0.0;
+    msg2.linear.y=1.0;
+    msg2.linear.z=0.0;
+    msg2.angular.x=0.0;
+    msg2.angular.y=0.0;
+    msg2.angular.z=0.0;
+    while(ros::ok())
+    {
+     if(cnt<5)
+     {
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     else
+     {
+         break;
+     }
+     loop_rate.sleep();
+    }
+}
+geometry_msgs::Twist msg1;
+geometry_msgs::Twist msg3;
+void subCallback(geometry_msgs::Twist msg)
+    {
+       msg1=msg;
+       msg3=msg;
+    }
+void quadGUI::on_pushButton_5_clicked()
+{
+    ROS_INFO("killing switch");
+    front=nh.advertise<geometry_msgs::Twist>("/quad/cmd_vel", 1000);
+    sub = nh.subscribe<geometry_msgs::Twist>("/quad/odom", 10, subCallback);
+    ros::Rate loop_rate(30);
+    int cnt=0;
+    while(ros::ok())
+    {
+     if(cnt<5)
+     {
+         msg2.linear.x=msg1.linear.x-(cnt+1)*(msg3.linear.x)/5;
+         msg2.linear.y=msg1.linear.y-(cnt+1)*(msg3.linear.y)/5;
+         msg2.linear.z=msg1.linear.z-(cnt+1)*(msg3.linear.z)/5;
+         msg2.angular.x=msg1.angular.x-(cnt+1)*(msg3.angular.x)/5;
+         msg2.angular.y=msg1.angular.y-(cnt+1)*(msg3.angular.y)/5;
+         msg2.angular.z=msg1.angular.z-(cnt+1)*(msg3.angular.z)/5;
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     if(cnt<15&&cnt>=5)
+     {
+         msg2.linear.x=0.0;
+         msg2.linear.y=0.0;
+         msg2.linear.z=0.0;
+         msg2.angular.x=0.0;
+         msg2.angular.y=0.0;
+         msg2.angular.z=0.0;
+         cnt+=1;
+         front.publish(msg2);
+         ros::spinOnce();
+     }
+     else
+     {
+         break;
+     }
+     loop_rate.sleep();
+    }
+}

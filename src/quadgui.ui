@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="hoverButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>100</y>
+      <x>520</x>
+      <y>60</y>
       <width>111</width>
       <height>27</height>
      </rect>
@@ -66,7 +66,7 @@
    <widget class="QPushButton" name="togglecameraButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>640</x>
       <y>60</y>
       <width>111</width>
       <height>27</height>
@@ -79,8 +79,8 @@
    <widget class="QPushButton" name="keyboardButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>150</y>
+      <x>610</x>
+      <y>300</y>
       <width>151</width>
       <height>27</height>
      </rect>
@@ -93,7 +93,7 @@
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>200</y>
+      <y>240</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -102,8 +102,8 @@
    <widget class="QPlainTextEdit" name="yvalText">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>200</y>
+      <x>610</x>
+      <y>220</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -112,8 +112,8 @@
    <widget class="QPlainTextEdit" name="zvalText">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>200</y>
+      <x>700</x>
+      <y>240</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>240</y>
+      <y>250</y>
       <width>98</width>
       <height>27</height>
      </rect>
@@ -204,6 +204,71 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>100</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>forward</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>100</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>backwards</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>150</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>right</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>150</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>left</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>190</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>stop</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -224,6 +289,17 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
